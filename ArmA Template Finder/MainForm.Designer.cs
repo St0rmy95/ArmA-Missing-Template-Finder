@@ -28,6 +28,7 @@ namespace ArmA_Template_Finder
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbTerrainBuilderFile = new System.Windows.Forms.TextBox();
             this.tbTemplateFolder = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +40,10 @@ namespace ArmA_Template_Finder
             this.btnFind = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbTerrainBuilderFile
@@ -95,6 +100,7 @@ namespace ArmA_Template_Finder
             // 
             // lbFoundItems
             // 
+            this.lbFoundItems.ContextMenuStrip = this.contextMenuStrip;
             this.lbFoundItems.FormattingEnabled = true;
             this.lbFoundItems.Location = new System.Drawing.Point(12, 120);
             this.lbFoundItems.Name = "lbFoundItems";
@@ -131,6 +137,29 @@ namespace ArmA_Template_Finder
             this.folderBrowserDialog.Description = "Select Template folder.";
             this.folderBrowserDialog.ShowNewFolderButton = false;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuCopy,
+            this.menuDelete});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(190, 70);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
+            // 
+            // menuCopy
+            // 
+            this.menuCopy.Name = "menuCopy";
+            this.menuCopy.Size = new System.Drawing.Size(189, 22);
+            this.menuCopy.Text = "Copy Template Name";
+            this.menuCopy.Click += new System.EventHandler(this.menuCopy_Click);
+            // 
+            // menuDelete
+            // 
+            this.menuDelete.Name = "menuDelete";
+            this.menuDelete.Size = new System.Drawing.Size(189, 22);
+            this.menuDelete.Text = "Delete Template";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +180,7 @@ namespace ArmA_Template_Finder
             this.Name = "MainForm";
             this.Text = "ArmA Missing Template Finder";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,6 +199,9 @@ namespace ArmA_Template_Finder
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem menuCopy;
+        private System.Windows.Forms.ToolStripMenuItem menuDelete;
     }
 }
 

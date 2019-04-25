@@ -111,5 +111,31 @@ namespace ArmA_Template_Finder
             this.btnTBFile.Enabled = value;
             this.btnTemplFolder.Enabled = value;
         }
+
+        private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (lbFoundItems.SelectedIndex < 0)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+
+        private void menuCopy_Click(object sender, EventArgs e)
+        {
+            if (lbFoundItems.SelectedIndex < 0)
+                return;
+
+            Clipboard.SetText(lbFoundItems.SelectedItem.ToString());
+        }
+       
+
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            if (lbFoundItems.SelectedIndex < 0)
+                return;
+
+            lbFoundItems.Items.RemoveAt(lbFoundItems.SelectedIndex);
+        }
     }
 }
